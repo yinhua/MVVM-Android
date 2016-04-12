@@ -1,4 +1,4 @@
-package com.mvvm.android.viewmodel;
+package com.mvvm.android.viewmodel.bind;
 
 import android.databinding.BaseObservable;
 

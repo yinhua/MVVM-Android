@@ -4,6 +4,8 @@ import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
@@ -15,6 +17,12 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.mvvm.android.R;
+import com.mvvm.android.view.adapter.RecyclerAdapter;
+import com.mvvm.android.viewmodel.bind.BindBoolean;
+import com.mvvm.android.viewmodel.bind.BindString;
+import com.mvvm.android.viewmodel.bind.BindTypeValue;
+
+import java.util.List;
 
 /**
  * @author hua.yin
@@ -103,8 +111,8 @@ public class DataBindingAttribute {
 
     @BindingAdapter({"image_url","place_holder"})
     public static void imageDrawableLoad(ImageView imageView, String url, Drawable drawable) {
-      Log.i(TAG, "image drawable load :" + imageView.toString()
-              + " url = " + url + " drawable=" + drawable );
+        Log.i(TAG, "image drawable load :" + imageView.toString()
+                + " url = " + url + " drawable=" + drawable );
         imageView.setImageResource(R.drawable.img_splash_background);
     }
 
@@ -112,4 +120,47 @@ public class DataBindingAttribute {
     public static void imageLoad(ImageView imageView, String url) {
         Log.i(TAG, "image load :" + imageView.toString() + " url = " + url);
     }
+
+    @BindingAdapter({"bindAdapter"})
+    public static void bindAdapter(RecyclerView recyclerView, RecyclerAdapter adapter) {
+        List<BindTypeValue> bindListType = (List<BindTypeValue>) recyclerView.getTag(R.id.bind_tag);
+        if (bindListType != null) {
+            addDataToAdapter(bindListType, adapter);
+        }
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()
+                , LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
+    }
+
+    @BindingAdapter({"bindItems"})
+    public static void bindItems(RecyclerView recyclerView , List<BindTypeValue> items) {
+        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+        assert (adapter instanceof RecyclerAdapter);
+        if (adapter != null) {
+            RecyclerAdapter recyclerAdapter = (RecyclerAdapter) adapter;
+            addDataToAdapter(items, recyclerAdapter);
+            recyclerAdapter.notifyDataSetChanged();
+        } else {
+            recyclerView.setTag(R.id.bind_tag, items);
+        }
+    }
+
+    private static void addDataToAdapter(List<BindTypeValue> items
+            , RecyclerAdapter recyclerAdapter) {
+        for (BindTypeValue bindTypeValue : items) {
+            List valueList = bindTypeValue.getList();
+            if (valueList != null) {
+                recyclerAdapter.addDataList(valueList, bindTypeValue.getViewType());
+            } else {
+                recyclerAdapter.addData(bindTypeValue.get(), bindTypeValue.getViewType());
+            }
+        }
+    }
+
+    @BindingAdapter({"bindLayoutManager"})
+    public static void bindLayoutManager(RecyclerView recyclerView
+            , RecyclerView.LayoutManager layoutManager) {
+        recyclerView.setLayoutManager(layoutManager);
+    }
+
 }

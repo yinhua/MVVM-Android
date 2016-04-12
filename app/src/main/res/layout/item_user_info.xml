@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+   <data class="UserItemDataBinding">
+      <variable
+          name="userItemModel"
+          type="com.mvvm.android.viewmodel.UserItemViewModel"/>
+   </data>
+   <LinearLayout android:orientation="vertical"
+                 android:layout_width="match_parent"
+                 android:layout_height="40dp">
+      <TextView
+          android:layout_width="match_parent"
+          android:text="@{userItemModel.userName}"
+          android:background="@android:color/holo_green_dark"
+          android:textColor="@android:color/holo_red_dark"
+          android:layout_height="40dp"/>
+   </LinearLayout>
+</layout>
+

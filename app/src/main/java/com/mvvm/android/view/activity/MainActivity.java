@@ -12,7 +12,6 @@ import com.mvvm.android.viewmodel.iview.IHomeView;
 public class MainActivity extends BaseActivity
         implements IHomeView {
     private MainDataBinding mMainDataBinding;
-    private MainViewModel mMainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +19,7 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
         mMainDataBinding = DataBindingUtil.setContentView(this
                 , R.layout.activity_main);
-        mMainViewModel = new MainViewModel(this);
-        mMainDataBinding.setViewModel(mMainViewModel);
+        mMainDataBinding.setViewModel(new MainViewModel(this));
         startSplashActivity();
     }
     public void startSplashActivity() {

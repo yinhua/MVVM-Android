@@ -2,6 +2,7 @@ package com.mvvm.android.viewmodel;
 
 import android.view.View;
 
+import com.mvvm.android.viewmodel.bind.BindBoolean;
 import com.mvvm.android.viewmodel.iview.IUserView;
 
 /**

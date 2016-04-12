@@ -12,14 +12,12 @@ import com.mvvm.android.viewmodel.iview.IUserView;
 public class UserActivity extends BaseActivity
         implements IUserView{
     private UserDataBinding mUserDataBinding;
-    private UserViewModel mUserViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mUserDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_user);
-        mUserViewModel = new UserViewModel(this);
-        mUserDataBinding.setUserViewModel(mUserViewModel);
+        mUserDataBinding.setUserViewModel(new UserViewModel(this));
     }
 
     @Override

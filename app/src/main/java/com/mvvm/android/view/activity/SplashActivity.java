@@ -13,14 +13,12 @@ import com.mvvm.android.viewmodel.iview.ISplashView;
 public class SplashActivity extends AppCompatActivity
         implements ISplashView{
     private SplashDataBinding mSplashDataBinding;
-    private SplashViewModel mSplashViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSplashDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-        mSplashViewModel  = new SplashViewModel(this);
-        mSplashDataBinding.setSplashDataBinding(mSplashViewModel);
+        mSplashDataBinding.setSplashDataBinding(new SplashViewModel(this));
     }
 
     @Override

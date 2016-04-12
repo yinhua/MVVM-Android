@@ -13,15 +13,12 @@ public class LoginActivity extends BaseActivity
         implements ILoginView{
 
     private LoginDataBinding mLoginDataBinding;
-    private LoginViewModel mLoginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLoginDataBinding = DataBindingUtil.setContentView(this
-                , R.layout.activity_login);
-        mLoginViewModel  = new LoginViewModel(this);
-        mLoginDataBinding.setLoginViewModel(mLoginViewModel);
+        mLoginDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        mLoginDataBinding.setLoginViewModel(new LoginViewModel(this));
     }
 
     @Override
