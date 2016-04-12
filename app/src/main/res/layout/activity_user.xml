@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <data class="UserDataBinding">
+       <variable
+           name="userViewModel"
+           type="com.mvvm.android.viewmodel.UserViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mvvm.android.view.activity.UserActivity">
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bindRadioChanged="@{userViewModel.bindRadioValue[userViewModel.RADIO_INDEX_MALE]}"
+                android:text="男"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bindRadioChanged="@{userViewModel.bindRadioValue[userViewModel.RADIO_INDEX_FEMALE]}"
+                android:text="女"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:text="1"
+                bindCheckboxChanged="@{userViewModel.bindCheckboxValue[userViewModel.CHECKBOX_INDEX_ONE]}"
+                android:layout_height="wrap_content"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:text="2"
+                bindCheckboxChanged="@{userViewModel.bindCheckboxValue[userViewModel.CHECKBOX_INDEX_TWO]}"
+                android:layout_height="wrap_content"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:text="3"
+                bindCheckboxChanged="@{userViewModel.bindCheckboxValue[userViewModel.CHECKBOX_INDEX_THREE]}"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="修改"
+            android:onClick="@{userViewModel.modifyUserListener}"
+            />
+    </LinearLayout>
+</layout>

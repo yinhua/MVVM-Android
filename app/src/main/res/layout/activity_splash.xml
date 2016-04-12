@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data class="SplashDataBinding">
+        <variable
+            name="splashDataBinding"
+            type="com.mvvm.android.viewmodel.SplashViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mvvm.android.view.activity.SplashActivity">
+        <ImageView
+            android:id="@+id/image_splash_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@{splashDataBinding.splashDrawable}"
+            image_url="@{splashDataBinding.splashUrl}"
+            place_holder="@{@drawable/img_splash_background}"/>
+    </RelativeLayout>
+
+</layout>
