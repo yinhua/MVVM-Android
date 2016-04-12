@@ -10,9 +10,20 @@ import java.util.List;
 public class BindValue<T> extends BindTypeValue<T> {
     private T mValue;
 
+    public BindValue() {
+
+    }
+
     public BindValue(int viewType, T value) {
         super(viewType);
         mValue = value;
+    }
+
+    public void set(T value) {
+        if (mValue != value) {
+            mValue =value;
+            notifyChange();
+        }
     }
 
     @Override

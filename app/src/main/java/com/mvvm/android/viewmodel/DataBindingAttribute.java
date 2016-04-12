@@ -22,6 +22,7 @@ import com.mvvm.android.viewmodel.bind.BindBoolean;
 import com.mvvm.android.viewmodel.bind.BindString;
 import com.mvvm.android.viewmodel.bind.BindTypeValue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,6 +38,13 @@ public class DataBindingAttribute {
     public static String convertBindString(final BindString value) {
         Log.i(TAG, "convertBindString " + " get=" + value.get());
         return value.get();
+    }
+
+    @BindingConversion
+    public static List<BindTypeValue> convertBindTypeValue(final BindTypeValue value) {
+        List<BindTypeValue> bindTypeValueList = new ArrayList<>();
+        bindTypeValueList.add(value);
+        return bindTypeValueList;
     }
 
     @BindingConversion

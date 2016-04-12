@@ -29,12 +29,15 @@ public class UserAdapter extends RecyclerAdapter {
                     , R.layout.item_user_info, parent, false);
             userItemDataBinding.setUserItemModel(new UserItemViewModel());
             return new UserHolder(userItemDataBinding);
-        } else if (TYPE_TEXT == viewType) {
+        } else {
             UserItemDataBindings userItemDataBindings = DataBindingUtil.inflate(inflater
                     , R.layout.item_user_infos, parent, false);
             userItemDataBindings.setUserItemModel(new UserItemViewModel());
             return new UserButtonHolder(userItemDataBindings);
         }
-        return null;
+    }
+
+    public void updateFirstItem(String name) {
+       updateData(0, name, TYPE_BUTTON);
     }
 }

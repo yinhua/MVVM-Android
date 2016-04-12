@@ -95,6 +95,13 @@ public abstract class RecyclerAdapter extends RecyclerView.Adapter {
         }
     }
 
+    public void updateData(int index, Object data, int type) {
+        if (data != null && index >= 0 && index < mItemList.size()) {
+            mItemList.set(index, data);
+            mTypeList.set(index, type);
+        }
+    }
+
     /**
      * 添加灵敏据
      *

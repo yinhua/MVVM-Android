@@ -12,9 +12,15 @@
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycleView"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             bindItems="@{userListViewModel.users}"
             bindAdapter="@{userListViewModel.userAdapter}"
             android:layout_width="match_parent" />
+        <Button
+            android:layout_width="match_parent"
+            android:text="修改列表"
+            android:layout_margin="12dp"
+            android:onClick="@{userListViewModel.modifyUserListener}"
+            android:layout_height="50dp"/>
     </LinearLayout>
 </layout>

@@ -12,6 +12,10 @@ import java.util.List;
 public abstract class BindTypeValue<T> extends BaseObservable {
     private int mViewType;
 
+    public BindTypeValue() {
+
+    }
+
     public BindTypeValue(int viewType) {
        mViewType = viewType;
     }
@@ -23,5 +27,6 @@ public abstract class BindTypeValue<T> extends BaseObservable {
     public abstract T get();
 
     public abstract List<T> getList();
+
 }
 

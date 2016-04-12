@@ -1,5 +1,6 @@
 package com.mvvm.android.viewmodel.bind;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,10 +9,13 @@ import java.util.List;
  * @since: 16/4/12 下午2:45
  */
 public class BindListValue<T> extends BindTypeValue<T> {
-    private List<T> mValueList;
+    private List<T> mValueList = new ArrayList<>();
+    public BindListValue() {
+
+    }
     public BindListValue(int viewType, List<T> list) {
         super(viewType);
-        mValueList = list;
+        mValueList.addAll(list);
     }
 
     @Override
@@ -19,8 +23,16 @@ public class BindListValue<T> extends BindTypeValue<T> {
         return null;
     }
 
+    public void add(T value) {
+        mValueList.add(value);
+    }
+
     @Override
     public List<T> getList() {
         return mValueList;
+    }
+
+    public void set(T t) {
+
     }
 }
